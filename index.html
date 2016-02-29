@@ -52,13 +52,18 @@
           <p>This article is meant to take you through the steps to implimenting a functioning html script that will load pictures into a database. 
           Before we begin you need to set up your table in your database. We used a slim-skeleton on a vagrant program. If you do not have this set 
           up we suggest going <a href="http://jeremykendall.net/2014/07/28/from-zero-to-slim-framework-getting-your-first-project-off-the-ground/">here</a> 
-          and do so. Also you should have mysql downloaded if you dont navigate to where your vagrant file and use the command below to instal it. 
-          Now that you have all those things we are ready to begin!</p>
+          and do so. Also you should have mysql downloaded if you dont navigate to where your vagrant file and use the commands below to install mysql. </p>
+          <code> sudo apt-get install -y mysql-server </code>
+          <code> mysql-server libapache2-mod-auth-mysql php5-mysql </code>
+          <p>Now that you have all those things we are ready to begin!</p>
         <h3>
-          <a id="creating-table" class="anchor" href="#creating-table" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Creating Table</h3>
-          <p> 
-          
-          </p>
+          <a id="creating-the-table" class="anchor" href="#creating-the-table" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Creating The Table</h3>
+          <p> Once you've logged into mysql you need to create that database and table you will be storing the image to: </p>
+          <ul>
+            <li>Create a database, ours is named databaseimage: <code>CREATE database databaseimage;</code></li> 
+            <li>Switch over to your database: <code>use databaseimage;</code>
+            <li>Create a table, ours is named store: <code>CREATE table store /n </code>
+          </ul>
       </section>
 
       <footer>
