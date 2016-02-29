@@ -54,46 +54,7 @@
 <a id="Example" class="anchor" href="#designer-templates" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Example</h3>
 
 <p>  </p>
-<?php
-          $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-        // set the PDO error mode to exception
-          $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-          //mysqli_connect("localhost","root","Rcs12345") or die(mysql_error());
-          //mysql_select_db("databaseimage") or die(mysql_error());
-          if(isset($_FILES['image'])){
-            $file=  $_FILES['image']['tmp_name'];
-          }
-          if(!isset($file))
-            echo "Please select an image.";
-          else {
-            if(isset($_FILES['image'])){
-              $image= (file_get_contents($_FILES['image']['tmp_name']));
-              $image_name = ($_FILES['image']['name']);
-              $image_size = getimagesize($_FILES['image']['tmp_name']); //to check if its an image_size
 
-              if($image_size == FALSE)
-                echo "Thats not an image.";
-              else{
-                $sql = "INSERT INTO store VALUES('','image_name','$image')";
-                /*if(!$conn->query($sql)){
-                  echo "Something went wrong!";
-                }
-                else {
-                  # code...
-                }*/
-                if(!$insert = $conn->query($sql))//= mysql_query("INSERT INTO store VALUES('','image_name','$image')"))
-                  echo "Problem uploading image.";
-                else {
-                  $conn->query($sql);
-                  $lastid = $conn->lastInsertId(); //returns id of latest photo uploaded
-                  //echo '<img src="data:image/jpeg;base64,' . base64_encode( $row['image'] ) . '" />';
-                  echo "<img src= get.php?id=$lastid>";
-
-                }
-              }
-            }
-          }
-         ?>
 <h3>
 <a id="creating-pages-manually" class="anchor" href="#creating-pages-manually" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Creating pages manually</h3>
 
