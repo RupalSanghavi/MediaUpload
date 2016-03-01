@@ -53,27 +53,30 @@
           Before we begin you need to set up your table in your database. We used a slim-skeleton on a vagrant program. If you do not have this set 
           up we suggest going <a href="http://jeremykendall.net/2014/07/28/from-zero-to-slim-framework-getting-your-first-project-off-the-ground/">here</a> 
           and do so. Also you should have mysql downloaded if you dont navigate to where your vagrant file and use the commands below to install mysql. </p>
-          <code> sudo apt-get install -y mysql-server </code>
-          <code> mysql-server libapache2-mod-auth-mysql php5-mysql </code>
-          <p>Now that you have all those things we are ready to begin!</p>
+          <code> sudo apt-get install mysql-server libapache2-mod-auth-mysql php5-mysql </code>
+          <p>If you are new to mysql we suggest taking a quick look<a href=http://www.mysqltutorial.org/basic-mysql-tutorial.aspx> here</a>. Now that you have all those things we are ready to begin!</p>
         <h3>
           <a id="creating-the-table" class="anchor" href="#creating-the-table" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Creating The Table</h3>
-          <p> Once you've logged into mysql you need to create that database and table you will be storing the image to: </p>
+          <p> Once you've logged into mysql you need to create that database and the table you will be storing the image to : </p>
           <ul>
             <li>Create a database, ours is named databaseimage: <code>CREATE database databaseimage;</code></li> 
-            <li>Switch over to your database: <code>use databaseimage;</code>
-            <li>Create a table, ours is named store: <code>CREATE table store  </code>
+            <li>Switch over to your database: <code>use databaseimage;</code></li>
+            <li>Create a table, ours is named store: <code>CREATE table store (</code></li>
+            <li>Create the first attribute inside the parenthesis, the first attribute is id with a type int, two constraints NOT NULL and PRIMARY KEY and one field AUTOINCREMENT: <code>   id int NOT NULL AUTOINCREMENT PRIMARY KEY,</code></li>
+            <li>The second attribute is name with a type varchar that has no more than 50 characters and a constraint of NOT NULL: <code>  name varchar(50) NOT NULL, </code></li>
+            <li>The third attribute which is the most important one is the image with a type blob and a constraint of NOT NULL: <code>  image blob NOT NULL </code></li>
+            <li>Generate a closing parenthesis: <code>  )  </code></li>
           </ul>
         <h3>
-          <a id="creating-the-attribute" class="anchor" href="#creating-the-attribute" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Creating The Attributes</h3>
-          <p> Once you've created the table store, you also need to create attributes under the table since table can not be created without any column. </p>
-          <ul>
-            <li>Generate an opening parenthesis right after creating the table: <code>(</code></li> 
-            <li>Create the first attribute inside the parenthesis, our first attribute is id with a type int, two constraints NOT NULL and PRIMARY KEY and one field AUTOINCREMENT: <code>   id int NOT NULL AUTOINCREMENT PRIMARY KEY,</code>
-            <li>Our second attribute is name with a type varchar that has no more than 50 characters and a constraint of NOT NULL: <code>  name varchar(50) NOT NULL, </code>
-            <li>The third attribute which is the most important one is the image with a type blob and a constraint of NOT NULL: <code>  image blob NOT NULL </code>
-            <li>Generate a closing parenthesis: <code>  )  </code>
-          </ul>
+          <a id="connecting-file-to-database" class="anchor" href="#connecting-file-to-database" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Connecting PHP File to Database/h3>
+          <p> Now you are ready to create your PHP file. The we made our file in atom and we named it MediaUpload.php.
+            <ul>
+              <li>Now you need to declare the file as a html file to do this start the file with <code><!DOCTYPE html></code></li>
+              <li>Next you need to connecting it to the database you created. start by opeing a PHP reading section: <code><?php</code></li>
+              <li>On the line create connect to the server <code>$servername = "localhost";</code> </li>
+              <li>Connect with username and password for mysql with <code>$username = "root";</code> and <code>$password = "your password";</code></li>
+              <li>Access certain database using <code>$dbname = "databaseimage";</code></li>
+              <li>Finally you can close the PHP section with <code>?></code></li>
       </section>
 
       <footer>
