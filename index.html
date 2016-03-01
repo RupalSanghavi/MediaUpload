@@ -55,8 +55,10 @@
           and do so. Also you should have mysql downloaded if you dont navigate to where your vagrant file and use the commands below to install mysql. </p>
           <code> sudo apt-get install mysql-server libapache2-mod-auth-mysql php5-mysql </code>
           <p>If you are new to mysql we suggest taking a quick look<a href=http://www.mysqltutorial.org/basic-mysql-tutorial.aspx> here</a>. Now that you have all those things we are ready to begin!</p>
+        
         <h3>
           <a id="creating-the-table" class="anchor" href="#creating-the-table" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Creating The Table</h3>
+          
           <p> Once you've logged into mysql you need to create that database and the table you will be storing the image to : </p>
           <ul>
             <li>Create a database, ours is named databaseimage: <code>CREATE database databaseimage;</code></li> 
@@ -67,22 +69,37 @@
             <li>The third attribute which is the most important one is the image with a type blob and a constraint of NOT NULL: <code>  image blob NOT NULL </code></li>
             <li>Generate a closing parenthesis: <code>  )  </code></li>
           </ul>
+          
         <h3>
           <a id="connecting-file-to-database" class="anchor" href="#connecting-file-to-database" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Connecting PHP File to Database</h3>
+          
           <p> Now you are ready to create your PHP file. The we made our file in atom and we named it MediaUpload.php.
             <ul>
               <li>Now you need to declare the file as a html file to do this start the file with <code><!DOCTYPE html></code></li>
-              <li>Next you need to connecting it to the database you created. start by opeing a PHP reading section: <code><?php</code></li>
+              <li>Next you need to connecting it to the database you created. start by opeing a PHP reading section: <code>?php</code></li>
               <li>On the line create connect to the server <code>$servername = "localhost";</code> </li>
               <li>Connect with username and password for mysql with <code>$username = "root";</code> and <code>$password = "your password";</code></li>
               <li>Access certain database using <code>$dbname = "databaseimage";</code></li>
               <li>Finally you can close the PHP section with <code>?></code></li>
+            </ul>
+         <h3>
+          <a id="creating-user-interface" class="anchor" href="#creating-user-interface" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Creating User Interface</h3>
+        
+          <p>Now we need to create a basic html file with the tags html, head, and body as shown in the image.</p>
+          <img src="https://scontent-dfw1-1.xx.fbcdn.net/hphotos-xlt1/v/t1.0-9/12803047_1108206922555344_1319046608328515035_n.jpg?oh=b8d288b9a619bc8bb718ab5c453aa3d6&oe=5769E53D"/>
+          <p>Next a title needs to be added to the page in the header section. To format the title there are two lines starting with "meta" as showed in the following picture. </p>
+          <img src="https://scontent-dfw1-1.xx.fbcdn.net/hphotos-xtf1/v/t1.0-9/12805706_1108210525888317_1101951824324498166_n.jpg?oh=c03a9926202ff74b6fa005e025bcd0c0&oe=57654ABF"/>
+          <p>In the body section of the html a form needs to be added so the user can add a photo to the database for this you need to use a form with a selfcalling action to your
+          php file, aswell as the POST method for changing the database. Also the File needs to address the input type which we called file and image along with
+          a submit button that uploads the image</p>
+          <img src="https://scontent-dfw1-1.xx.fbcdn.net/hphotos-xtf1/v/t1.0-9/12795308_1108213035888066_332427012006805454_n.jpg?oh=f2c0361749a6fdb91be97d0ccc1f4344&oe=5767A8BA"/>
+          <p> Now when you access the page you should see this.<img src="https://cloud.githubusercontent.com/assets/14035935/13436063/139748ac-dfa3-11e5-9757-fcf583527e51.png"/> </p>
       </section>
 
       <footer>
         <span class="ribbon-outer">
           <span class="ribbon-inner">
-            <p>Projects by <a href="https://github.com/RupalSanghavi">RupalSanghavi</a> can be found on <a href="https://github.com/RupalSanghavi">GitHub</a></p>
+            <p>Projects by <a href="https://github.com/RupalSanghavi">Rupal Sanghavi, Etta Godwin, & Kena Du</a> can be found on <a href="https://github.com/RupalSanghavi">GitHub</a></p>
           </span>
           <span class="left-tail"></span>
           <span class="right-tail"></span>
