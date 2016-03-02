@@ -94,6 +94,19 @@
           a submit button that uploads the image</p>
           <img src="https://scontent-dfw1-1.xx.fbcdn.net/hphotos-xtf1/v/t1.0-9/12795308_1108213035888066_332427012006805454_n.jpg?oh=f2c0361749a6fdb91be97d0ccc1f4344&oe=5767A8BA"/>
           <p> Now when you access the page you should see this.<img src="https://cloud.githubusercontent.com/assets/14035935/13436063/139748ac-dfa3-11e5-9757-fcf583527e51.png"/> </p>
+      
+        <h3>
+          <a id="accepting-image-file" class="anchor" href="#accepting-image-file" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Accepting the Image File</h3>
+          <p> Now that you have the user interface made you need to accept the image file. To do that you need to start a new php tag underneath the form. </p>
+          <ul>
+            <li>A PDO needs to be created to correctly connect to the mysql account using the variables declared at the begining of the page. The exception mode should be set the attribute <img src="https://scontent-dfw1-1.xx.fbcdn.net/hphotos-xta1/v/t1.0-9/10400344_1108432029199500_3173890769593115531_n.jpg?oh=97da184c65f1f7863ece059a27c98e0c&oe=5764DC63" /></li>
+            <li>Now the file properties need to be loaded from the image in the form to a temporary name</li>
+            <li>If there is no file to load we need an error message like "Please select an image"<img src="https://scontent-dfw1-1.xx.fbcdn.net/hphotos-xta1/v/t1.0-9/943957_1108432032532833_31673831546013598_n.jpg?oh=2ef113b0c41538e2b1a6227b2cbe0a21&oe=57516F1F" /></li>
+            <li>When there is a file you need to store the image contents into the $image variable</li>
+            <li>Store the name of the file into $image_name</li>
+            <li>Get the size of the image and store it to make sure the file is actually an image</li>
+          </ul>
+          <img sr="https://scontent-dfw1-1.xx.fbcdn.net/hphotos-xpt1/v/t1.0-9/1929937_1108432035866166_5302531134155526651_n.jpg?oh=cb8508f246c0cf38073d2927f1cfcf25&oe=575B4238" />
       </section>
 
       <footer>
