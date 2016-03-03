@@ -60,7 +60,7 @@
           <a id="creating-the-table" class="anchor" href="#creating-the-table" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Creating The Table</h3>
           
           <p> Now you need to log in to mysql in vagrant in your terminal <code>mysql -u root -p</code>
-          <p> Once you've logged into mysql you need to create that database and the table you will be storing the image to : </p>
+          <p> Once you've logged into mysql you need to create that database and the table you will be storing the image to.</p>
           <ul>
             <li>Create a database, ours is named databaseimage: <code>CREATE database databaseimage;</code></li> 
             <li>Switch over to your database: <code>use databaseimage;</code></li>
@@ -70,60 +70,62 @@
             <li>The third attribute which is the most important one is the image with a type blob and a constraint of NOT NULL
           </ul>
           
-            <code> CREATE table store(
-                   id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
-                   name varchar(50) NOT NULL,
-                   image blob NOT NULL); </code>
+            <pre><code> CREATE table store(
+            id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+            name varchar(50) NOT NULL,
+            image blob NOT NULL); </code></pre>
           
         <h3>
           <a id="connecting-file-to-database" class="anchor" href="#connecting-file-to-database" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Connecting PHP File to Database</h3>
           
           <p> Now you are ready to create your PHP file. The we made our file in atom and we named it MediaUpload.php.
             <ul>
-              <li>Now you need to declare the file as a html file to do this start the file with <code>'<!DOCTYPE html>'</code></li>
+              <li>Now you need to declare the file as a html file to do this start the file with <pre><code><!DOCTYPE html></code></pre></li>
               <li>Next you need to connecting it to the database you created. Start by opeing a PHP reading section immediately after declaring the html</li>
               <li>On the next line create connect to the server </li>
               <li>Connect with username and password for mysql </li>
               <li>Access certain database  </li>
               <li>Finally you can close the PHP section </li>
             </ul>
-            <code><?php
+            <pre><code><?php
                   $servername = "localhost";
                   $username = "root";
                   $password = "yourpassword";
                   $dbname = "databaseimage";
-                  ?></code>
+                  ?></code></pre>
             
          <h3>
           <a id="creating-user-interface" class="anchor" href="#creating-user-interface" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Creating User Interface</h3>
         
           <p>Now we need to create a basic html file with the tags html, head, and body as shown in the image.</p>
-          <code> <html>
-                    <head>
-                      
-                    </head>
-                    <body>
-                      
-                    </body>
-                    
-                  </html>  </code>
+         <pre> <code> <html>
+            <head>
+              
+            </head>
+            
+            <body>
+              
+            </body>
+            
+          </html>  </code></pre>
+          
           <p>Next a title needs to be added to the page in the header section. To format the title there are two lines starting with "meta" as showed in the following code. </p>
-          <code> 
+          <pre><code> 
           <head>
             <title>Upload an Image</title>
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
-          </head></code>
+          </head></code></pre>
           
           <p>In the body section of the html a form needs to be added so the user can add a photo to the database for this you need to use a form with a selfcalling action to your
           php file, aswell as the POST method for changing the database. Furthermore, the File needs to address the input type which we called file and image along with
           a submit button that uploads the image</p>
-          <code>
+          <pre><code>
           <form action='MediaUpload.php' method="POST" enctype="multipart/form-data">
           File:
           <input type="file" name="image"><input type="submit" name="Upload">
           <form>
-          </code>
+          </code></pre>
           <p> Now when you access the page you should see this.<img src="https://scontent-dfw1-1.xx.fbcdn.net/hphotos-xtl1/v/t1.0-9/12814299_1108779252498111_2406891388035363817_n.jpg?oh=ddb7dcf39cc503060fccab6c186d1280&oe=5754CC3D"/> </p>
       
         <h3>
@@ -166,7 +168,9 @@
       
         <h3>
           <a id="finishing-up" class="anchor" href="#finishing-up" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Finishing Up</h3>
-          <p>Your final php file should look like this. <img src="https://scontent-dfw1-1.xx.fbcdn.net/hphotos-xpt1/v/t1.0-9/12495259_1108836035825766_6988982743501875079_n.jpg?oh=81965bd608b82aef9c92f7478f1b6d73&oe=57522DAF"/></p>
+          <p>Your final php file should look like this file. </p>
+          <a href="https://github.com/EttaMari/MediaUpload/zipball/master" class="btn">Download .zip</a>
+          <a href="https://github.com/EttaMari/MediaUpload/tarball/master" class="btn">Download .tar.gz</a>
           <p>Now when you try to upload an image if it does it correctly the form will display "File uploaded into database." Now you are ready to impliment image uploading in any php file you want.</p> 
           
       </section>
