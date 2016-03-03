@@ -108,21 +108,19 @@
          &lt;/html&gt;  </code></pre>
           
           <p>Next a title needs to be added to the page in the header section. To format the title there are two lines starting with "meta" as showed in the following code. </p>
-          <pre><code> 
-          &lt;head&gt;
-            &lt;title&gt;Upload an Image&lt;/title&gt;
-            &lt;meta charset="UTF-8"&gt;
-            &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
-          &lt;/head&gt;</code></pre>
+          <pre><code>&lt;head&gt;
+          &lt;title&gt;Upload an Image&lt;/title&gt;
+          &lt;meta charset="UTF-8"&gt;
+          &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+        &lt;/head&gt;</code></pre>
           
           <p>In the body section of the html a form needs to be added so the user can add a photo to the database for this you need to use a form with a selfcalling action to your
           php file, aswell as the POST method for changing the database. Furthermore, the File needs to address the input type which we called file and image along with
           a submit button that uploads the image</p>
-          <pre><code>
-          &lt;form action='MediaUpload.php' method="POST" enctype="multipart/form-data"&gt;
+          <pre><code>&lt;form action='MediaUpload.php' method="POST" enctype="multipart/form-data"&gt;
           File:
           &lt;input type="file" name="image"&gt;&lt;input type="submit" name="Upload"&gt;
-          &lt;form&gt;
+        &lt;form&gt;
           </code></pre>
           <p> Now when you access the page you should see this.<img src="https://scontent-dfw1-1.xx.fbcdn.net/hphotos-xtl1/v/t1.0-9/12814299_1108779252498111_2406891388035363817_n.jpg?oh=ddb7dcf39cc503060fccab6c186d1280&oe=5754CC3D"/> </p>
       
