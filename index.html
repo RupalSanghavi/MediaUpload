@@ -80,51 +80,51 @@
           
           <p> Now you are ready to create your PHP file. The we made our file in atom and we named it MediaUpload.php.
             <ul>
-              <li>Now you need to declare the file as a html file to do this start the file with <pre><code><!DOCTYPE html></code></pre></li>
+              <li>Now you need to declare the file as a html file to do this start the file with <pre><code>&lt;!DOCTYPE html&gt;</code></pre></li>
               <li>Next you need to connecting it to the database you created. Start by opeing a PHP reading section immediately after declaring the html</li>
               <li>On the next line create connect to the server </li>
               <li>Connect with username and password for mysql </li>
               <li>Access certain database  </li>
               <li>Finally you can close the PHP section </li>
             </ul>
-            <pre><code><?php
+            <pre><code>&lt;?php
                   $servername = "localhost";
                   $username = "root";
                   $password = "yourpassword";
                   $dbname = "databaseimage";
-                  ?></code></pre>
+                  ?&gt;</code></pre>
             
          <h3>
           <a id="creating-user-interface" class="anchor" href="#creating-user-interface" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Creating User Interface</h3>
         
           <p>Now we need to create a basic html file with the tags html, head, and body as shown in the image.</p>
-         <pre> <code> <html>
-            <head>
+         <pre> <code> &l;thtml&gt;
+            &lt;head&gt;
               
-            </head>
+            &lt;/head&gt;
             
-            <body>
+            &lt;body&gt;
               
-            </body>
+            &lt;/body&gt;
             
-          </html>  </code></pre>
+          &lt;/html&gt;  </code></pre>
           
           <p>Next a title needs to be added to the page in the header section. To format the title there are two lines starting with "meta" as showed in the following code. </p>
           <pre><code> 
-          <head>
-            <title>Upload an Image</title>
-            <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-          </head></code></pre>
+          &lt;head&gt;
+            &lt;title&gt;Upload an Image&lt;/title&gt;
+            &lt;meta charset="UTF-8"&gt;
+            &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+          &lt;/head&gt;</code></pre>
           
           <p>In the body section of the html a form needs to be added so the user can add a photo to the database for this you need to use a form with a selfcalling action to your
           php file, aswell as the POST method for changing the database. Furthermore, the File needs to address the input type which we called file and image along with
           a submit button that uploads the image</p>
           <pre><code>
-          <form action='MediaUpload.php' method="POST" enctype="multipart/form-data">
+          &lt;form action='MediaUpload.php' method="POST" enctype="multipart/form-data"&gt;
           File:
-          <input type="file" name="image"><input type="submit" name="Upload">
-          <form>
+          &lt;input type="file" name="image"&gt;&lt;input type="submit" name="Upload"&gt;
+          &lt;form&gt;
           </code></pre>
           <p> Now when you access the page you should see this.<img src="https://scontent-dfw1-1.xx.fbcdn.net/hphotos-xtl1/v/t1.0-9/12814299_1108779252498111_2406891388035363817_n.jpg?oh=ddb7dcf39cc503060fccab6c186d1280&oe=5754CC3D"/> </p>
       
@@ -133,10 +133,10 @@
           <p> Now that you have the user interface made you need to accept the image file. To do that you need to start a new php tag underneath the form. </p>
           <ul>
             <li>A PDO needs to be created to correctly connect to the mysql account using the variables declared at the begining of the page. The exception mode should be set the attributes
-            <code>
+            <code>&lt;?php
             $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
             // set the PDO error mode to exception
-            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);</code></li>
+            $conn-&gt;setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);</code></li>
             <li>Now the file properties need to be loaded from the image in the form to a temporary name</li>
             <li>If there is no file to load we need an error message like "Please select an image"
             <code>if(isset($_FILES['image'])){
@@ -158,12 +158,13 @@
           <a id="storing-image" class="anchor" href="#storing-image" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Storing Image</h3>
           
           <p> Now all you have to do is make sure the file is in fact a image by using the size you store in the previous section and insert the image name and contents into
-          into the store table created at the begining of this tutorial. Then wrap up the whole file with a simple echo statement that lets the user know their image was stored.</p>
+          into the store table created at the begining of this tutorial. Then wrap up the whole file with a simple echo statement that lets the user know their image was stored and then close the php tag</p>
           <code>if($image_size == FALSE)
                 echo "Thats not an image.";
               else{
                 $sql = "INSERT INTO store VALUES('','image_name','$image')";
-                echo "File uploaded into the database.";</code>
+                echo "File uploaded into the database.";
+              ?&gt;</code>
           <p> Once you have uploaded your image your final product should look like this <img src="https://cloud.githubusercontent.com/assets/14035935/13436063/139748ac-dfa3-11e5-9757-fcf583527e51.png"/></p>
       
         <h3>
