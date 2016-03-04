@@ -71,9 +71,9 @@
           </ul>
           
             <pre><code> CREATE table store(
-  id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  name varchar(50) NOT NULL,
-  image blob NOT NULL); </code></pre>
+id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+name varchar(50) NOT NULL,
+image blob NOT NULL); </code></pre>
           
         <h3>
           <a id="connecting-file-to-database" class="anchor" href="#connecting-file-to-database" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Connecting PHP File to Database</h3>
@@ -88,39 +88,39 @@
               <li>Finally you can close the PHP section </li>
             </ul>
             <pre><code>&lt;?php
-            $servername = "localhost";
-            $username = "root";
-            $password = "yourpassword";
-            $dbname = "databaseimage";
-          ?&gt;</code></pre>
+    $servername = "localhost";
+    $username = "root";
+    $password = "yourpassword";
+    $dbname = "databaseimage";
+?&gt;</code></pre>
             
          <h3>
           <a id="creating-user-interface" class="anchor" href="#creating-user-interface" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Creating User Interface</h3>
         
           <p>Now we need to create a basic html file with the tags html, head, and body as shown in the image.</p>
          <pre> <code> &lt;html&gt;
-            &lt;head&gt;
-            &lt;/head&gt;
+    &lt;head&gt;
+    &lt;/head&gt;
             
-            &lt;body&gt;
-            &lt;/body&gt;
+    &lt;body&gt;
+    &lt;/body&gt;
             
-         &lt;/html&gt;  </code></pre>
+&lt;/html&gt;  </code></pre>
           
           <p>Next a title needs to be added to the page in the header section. To format the title there are two lines starting with "meta" as showed in the following code. </p>
           <pre><code>&lt;head&gt;
-          &lt;title&gt;Upload an Image&lt;/title&gt;
-          &lt;meta charset="UTF-8"&gt;
-          &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
-        &lt;/head&gt;</code></pre>
+    &lt;title&gt;Upload an Image&lt;/title&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+&lt;/head&gt;</code></pre>
           
           <p>In the body section of the html a form needs to be added so the user can add a photo to the database for this you need to use a form with a selfcalling action to your
           php file, aswell as the POST method for changing the database. Furthermore, the File needs to address the input type which we called file and image along with
           a submit button that uploads the image</p>
           <pre><code>&lt;form action='MediaUpload.php' method="POST" enctype="multipart/form-data"&gt;
-          File:
-          &lt;input type="file" name="image"&gt;&lt;input type="submit" name="Upload"&gt;
-        &lt;form&gt;
+    File:
+    &lt;input type="file" name="image"&gt;&lt;input type="submit" name="Upload"&gt;
+&lt;form&gt;
           </code></pre>
           <p> Now when you access the page you should see this.<img src="https://scontent-dfw1-1.xx.fbcdn.net/hphotos-xtl1/v/t1.0-9/12814299_1108779252498111_2406891388035363817_n.jpg?oh=ddb7dcf39cc503060fccab6c186d1280&oe=5754CC3D"/> </p>
       
@@ -130,24 +130,24 @@
           <ul>
             <li>A PDO needs to be created to correctly connect to the mysql account using the variables declared at the begining of the page. The exception mode should be set the attributes</li>
             <pre><code>&lt;?php
-            $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-            // set the PDO error mode to exception
-            $conn-&gt;setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);</code></pre>
+    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+    // set the PDO error mode to exception
+    $conn-&gt;setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);</code></pre>
             <li>Now the file properties need to be loaded from the image in the form to a temporary name</li>
             <li>If there is no file to load we need an error message like "Please select an image"</li>
             <pre><code>if(isset($_FILES['image'])){
-            $file=  $_FILES['image']['tmp_name'];
-          }
-          if(!isset($file))
-            echo "Please select an image.";</code></pre>
+    $file=  $_FILES['image']['tmp_name'];
+  }
+  if(!isset($file))
+    echo "Please select an image.";</code></pre>
             <li>When there is a file you need to store the image contents into the $image variable</li>
             <li>Store the name of the file into $image_name</li>
             <li>Get the size of the image and store it to make sure the file is actually an image</li>
             <pre><code> else {
-            if(isset($_FILES['image'])){
-              $image= (file_get_contents($_FILES['image']['tmp_name']));
-              $image_name = ($_FILES['image']['name']);
-              $image_size = getimagesize($_FILES['image']['tmp_name']); </code></pre>
+    if(isset($_FILES['image'])){
+      $image= (file_get_contents($_FILES['image']['tmp_name']));
+      $image_name = ($_FILES['image']['name']);
+      $image_size = getimagesize($_FILES['image']['tmp_name']); </code></pre>
             </ul>
           
         <h3>
@@ -156,20 +156,21 @@
           <p> Now all you have to do is make sure the file is in fact a image by using the size you store in the previous section and insert the image name and contents into
           into the store table created at the begining of this tutorial. Then wrap up the whole file with a simple echo statement that lets the user know their image was stored and then close the php tag</p>
           <pre><code>if($image_size == FALSE)
-                echo "Thats not an image.";
-              else{
-                $sql = "INSERT INTO store VALUES('','image_name','$image')";
-                echo "File uploaded into the database.";
-              }
-            }
-          }
-        ?&gt;</code></pre>
+    echo "Thats not an image.";
+  else{
+    $sql = "INSERT INTO store VALUES('','image_name','$image')";
+    echo "File uploaded into the database.";
+  }
+  }
+  }
+?&gt;</code></pre>
           <p> Once you have uploaded your image your final product should look like this <img src="https://cloud.githubusercontent.com/assets/14035935/13436063/139748ac-dfa3-11e5-9757-fcf583527e51.png"/></p>
       
         <h3>
           <a id="finishing-up" class="anchor" href="#finishing-up" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Finishing Up</h3>
-          <p>Your final php file should look like this file. </p>
+          <p>Your final php file should look like the following file. </p>
           <a href="https://github.com/EttaMari/MediaUpload/zipball/master" class="btn">Download .zip</a>
+          <p> </p>
           <a href="https://github.com/EttaMari/MediaUpload/tarball/master" class="btn">Download .tar.gz</a>
           <p>Now when you try to upload an image if it does it correctly the form will display "File uploaded into database." Now you are ready to impliment image uploading in any php file you want.</p> 
           
